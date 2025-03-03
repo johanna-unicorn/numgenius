@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "numgenius"
+version = "2.0.1"
+description = "Demo app for Python packaging (with ZeroDivisionError, and absolute imports)"
+authors = ["Johanna Alfonso <johanna.alfonso@unosquare.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numoperations = {version = "2.0.1", source = "aws"}
+
+[[tool.poetry.source]]
+name = "aws"
+url = "https://fgl-smartbuilding-137650815672.d.codeartifact.us-west-2.amazonaws.com/pypi/python-private-repository/simple/"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
