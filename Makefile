@@ -20,7 +20,7 @@ login-pip:
 	@echo "Logging in to CodeArtifact with pip"
 	@aws codeartifact login --tool pip \
 		--domain ${DOMAIN} --domain-owner ${DOMAIN_OWNER} \
-		--repository ${PYTHON_REPO_NAME}
+		--repository ${PYTHON_REPO_NAME} --region ${REGION}
 
 poetry-config:
 	@echo "Configuring Poetry to publish packages to the python private repository"
@@ -30,6 +30,10 @@ poetry-config:
 poetry-source-add:
 	@echo "Configuring Poetry to consume packages from the python private repository"
 	@poetry source add --priority=supplemental ${POETRY_SOURCE} ${POETRY_SOURCE_URL_CONSUME}
+
+poetry-publish:
+	@echo "Publishing the package to the python private repository"
+	@poetry publish --repository ${POETRY_SOURCE}
 
 codeartifact-publish:
 	@echo "Publishing the app to CodeArtifact as a generic package"
